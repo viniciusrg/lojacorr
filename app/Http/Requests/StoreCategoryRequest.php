@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class RegisterUserRequest extends FormRequest
+class StoreCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,17 +23,11 @@ class RegisterUserRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'email' => [
+            'name' => [
                 'required',
-                'email',
                 'max:255',
-                "unique:users"
-            ],
-            'password' => [
-                'required',
-                'min:6',
-                'max:100',
-            ],
+                "unique:categories"
+            ]
         ];
 
         return $rules;
