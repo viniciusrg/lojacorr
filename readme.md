@@ -79,3 +79,8 @@ docker exec -it web bash
 
 # Dentro do diretório ./app você irá encontrar um diretório Docs com o arquivo de importação do Insomnia para utilizar.
 - Para mais informações acesso o README da branch main.
+
+# Rotas e porta
+```
+Utilizar a url: http://localhost:9005/api
+```
