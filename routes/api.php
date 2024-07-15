@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,8 +26,11 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::delete('delete/{category_id}', [CategoryController::class, 'destroy']);
     });
 
-    Route::prefix('subcategory')->group(function (){
-        Route::post('', []);
+    Route::prefix('/subcategory')->group(function (){
+        Route::post('/', [SubCategoryController::class, 'store']);
+        Route::get('/', [SubCategoryController::class, 'index']);
+        Route::get('/{subcategory_id}', [SubcategoryController::class, 'show']);
+        Route::delete('delete/{subcategory_id}', [SubcategoryController::class, 'destroy']);
     });
 
 });
