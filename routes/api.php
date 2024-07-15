@@ -22,9 +22,11 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/', [CategoryController::class, 'store']);
         Route::get('/', [CategoryController::class, 'index']);
         Route::get('/{category_id}', [CategoryController::class, 'show']);
-        // Excluir categoria
+        Route::delete('delete/{category_id}', [CategoryController::class, 'destroy']);
+    });
 
-        // Adicionar rotas para Subcategorias
+    Route::prefix('subcategory')->group(function (){
+        Route::post('', []);
     });
 
 });

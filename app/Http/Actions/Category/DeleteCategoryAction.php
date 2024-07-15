@@ -7,7 +7,7 @@ use App\Models\Category;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Log;
 
-class ShowCategoryAction
+class DeleteCategoryAction
 {
     public function execute($category_id)
     {
@@ -15,13 +15,16 @@ class ShowCategoryAction
             // Return category
             $category = Category::findOrFail($category_id);
 
-            return new CategoryResource($category);
+            // Deleting
+            $category->delete();
+
+            return response(null, 200);
         } catch (ModelNotFoundException $e) {
             return response()->json(['message' => 'Category not found.'], 404);
         } catch (\Exception $e) {
             Log::error('Category show error: ' . $e->getMessage());
             return response()->json([
-                'message' => 'Failed get category. ' . $e->getMessage()
+                'message' => 'Failed to delete category. ' . $e->getMessage()
             ], 500);
         }
     }

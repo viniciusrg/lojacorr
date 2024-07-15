@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Actions\Category\DeleteCategoryAction;
 use App\Http\Actions\Category\IndexCategoryAction;
 use App\Http\Actions\Category\ShowCategoryAction;
 use App\Http\Actions\Category\StoreCategoryAction;
@@ -23,5 +24,10 @@ class CategoryController extends Controller
     public function show(string $category_id){
         $categories = new ShowCategoryAction();
         return $categories->execute($category_id);
+    }
+
+    public function destroy(string $category_id){
+        $category = new DeleteCategoryAction();
+        return $category->execute($category_id);
     }
 }
