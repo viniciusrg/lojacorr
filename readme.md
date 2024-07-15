@@ -32,12 +32,14 @@ A listagem de pastas do projeto deve ficar:
 
 # Certifique-se que sua aplicação Laravel possuí um .env e que este .env está com a `APP_KEY=` definida com valor válido.
 - Seu .env deverá ficar semelhante a esse:
+```
 DB_CONNECTION=mysql
 DB_HOST=host.docker.internal
 DB_PORT=3306
 DB_DATABASE=laravel
 DB_USERNAME=root
 DB_PASSWORD=root_password
+```
 
 # Contruir a imagem Docker, execute:
 
