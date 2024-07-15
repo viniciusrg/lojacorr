@@ -21,7 +21,7 @@ class DeleteSubcategoryAction
         } catch (ModelNotFoundException $e) {
             return response()->json(['message' => 'Subcategory not found.'], 404);
         } catch (\Exception $e) {
-            Log::error('Subcategory show error: ' . $e->getMessage());
+            Log::error('Subcategory delete error: ' . $e->getMessage());
             return response()->json([
                 'message' => 'Failed to delete subcategory. ' . $e->getMessage()
             ], 500);

@@ -12,7 +12,7 @@ class ShowCategoryAction
     public function execute($category_id)
     {
         try {
-            // Return category
+            // Get category
             $category = Category::findOrFail($category_id);
 
             return new CategoryResource($category);
@@ -21,7 +21,7 @@ class ShowCategoryAction
         } catch (\Exception $e) {
             Log::error('Category show error: ' . $e->getMessage());
             return response()->json([
-                'message' => 'Failed get category. ' . $e->getMessage()
+                'message' => 'Failed show category. ' . $e->getMessage()
             ], 500);
         }
     }

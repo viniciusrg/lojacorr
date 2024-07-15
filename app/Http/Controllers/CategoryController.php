@@ -7,7 +7,6 @@ use App\Http\Actions\Category\IndexCategoryAction;
 use App\Http\Actions\Category\ShowCategoryAction;
 use App\Http\Actions\Category\StoreCategoryAction;
 use App\Http\Requests\StoreCategoryRequest;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {

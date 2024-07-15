@@ -11,14 +11,14 @@ class IndexCategoryAction
     public function execute()
     {
         try {
-            // Return categories with 8 item per page
+            // Return categories with 8 items per page
             $categories = Category::paginate(8);
 
             return CategoryResource::collection($categories);
         } catch (\Exception $e) {
             Log::error('Categories index error: ' . $e->getMessage());
             return response()->json([
-                'message' => 'Failed to register user. ' . $e->getMessage()
+                'message' => 'Failed to index categories. ' . $e->getMessage()
             ], 500);
         }
     }

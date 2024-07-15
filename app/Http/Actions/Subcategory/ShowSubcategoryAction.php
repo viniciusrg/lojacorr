@@ -13,7 +13,7 @@ class ShowSubcategoryAction
     public function execute($subcategory_id)
     {
         try {
-            // Return subcategory
+            // Get subcategory
             $subcategory = Subcategory::findOrFail($subcategory_id);
 
             return new SubcategoryResource($subcategory);

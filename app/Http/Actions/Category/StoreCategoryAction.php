@@ -18,7 +18,7 @@ class StoreCategoryAction
         } catch (\Exception $e) {
             Log::error('Category store error: ' . $e->getMessage());
             return response()->json([
-                'message' => 'Failed to register user. ' . $e->getMessage()
+                'message' => 'Failed to store category. ' . $e->getMessage()
             ], 500);
         }
     }

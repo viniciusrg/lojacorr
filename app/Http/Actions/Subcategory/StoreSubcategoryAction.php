@@ -15,11 +15,11 @@ class StoreSubcategoryAction
                 'name' => $request->name
             ]);
 
-            return response()->json(['message' => 'Subcategory created successfully', 'category' => $SubCategory], 201);
+            return response()->json(['message' => 'Subcategory created successfully', 'subcategory' => $SubCategory], 201);
         } catch (\Exception $e) {
             Log::error('Subcategory store error: ' . $e->getMessage());
             return response()->json([
-                'message' => 'Failed to register Subcategory. ' . $e->getMessage()
+                'message' => 'Failed to store subcategory. ' . $e->getMessage()
             ], 500);
         }
     }

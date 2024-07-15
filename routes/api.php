@@ -26,6 +26,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::delete('delete/{category_id}', [CategoryController::class, 'destroy']);
     });
 
+    // Subcategories routes
     Route::prefix('/subcategory')->group(function (){
         Route::post('/', [SubCategoryController::class, 'store']);
         Route::get('/', [SubCategoryController::class, 'index']);
