@@ -11,6 +11,7 @@ docker ps
 ```sh
 docker compose version
 ```
+
 # Clone a branch docker para um repositório.
 - Execute o comando para clonar os arquivos de configuração do Docker:
 git clone -b docker https://github.com/viniciusrg/lojacorr.git .
@@ -31,7 +32,7 @@ A listagem de pastas do projeto deve ficar:
 - Abra a pasta app no seu terminal e execute o comando: git clone https://github.com/viniciusrg/lojacorr.git .
 
 # Certifique-se que sua aplicação Laravel possuí um .env e que este .env está com a `APP_KEY=` definida com valor válido.
-- Seu .env deverá ficar semelhante a esse:
+- Seu .env deverá ficar semelhante a esse com as configurações de acesso do seu MySql local ou de outro container:
 ```
 DB_CONNECTION=mysql
 DB_HOST=host.docker.internal
