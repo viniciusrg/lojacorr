@@ -1,36 +1,21 @@
-# Sobre
-
-Neste repositório vamos fazer a criação de uma imagem Docker que embora possa ser utilizada em produção, ainda merece ser aperfeiçoada para permitir realmente o escalonamento da aplicação.
-
-# Conteúdo da Imagem Docker
-
-- <b>PHP</b>, e diversas extensões e Libs do PHP, incluindo php-redis, pgsql, mysql, entre outras.
-
-- <b>Nginx</b>, como proxy reverso/servidor. Por fim de testes é que o Nginx está presente nesta imagem, em um momento de otimização está imagem deixará de ter o Nginx.
-
-- <b>Supervisor</b>, indispensal para executarmos a aplicação PHP e permitir por exemplo a execução de filas e jobs.
-
-- <b>Composer</b>, afinal de contas é preciso baixar as dependências mais atuais toda vez que fomos crontruir uma imagem Docker.
-
-# Vídeos Tutorial
-
-[Vídeo Sobre Criação do Dockerfile e do Docker Compose file](https://youtu.be/iDJjb2zYa4c)
-
 # Passo a Passo
 
-## Certifique-se de estar com o Docker em execução.
+# Certifique-se de estar com o Docker em execução.
 
 ```sh
 docker ps
 ```
 
-## Certifique-se de ter o Docker Compose instalado.
+# Certifique-se de ter o Docker Compose instalado.
 
 ```sh
 docker compose version
 ```
+# Clone a branch docker para um repositório.
+- Execute o comando para clonar os arquivos de configuração do Docker:
+git clone -b docker https://github.com/viniciusrg/lojacorr.git .
 
-## Clone sua aplicação Laravel para a pasta 'app'. Caso a pasta app não existe, crie a pasta.
+# Clone sua aplicação Laravel para a pasta 'app'. Caso a pasta app não exista, crie a pasta.
 
 A listagem de pastas do projeto deve ficar:
 
@@ -42,23 +27,25 @@ A listagem de pastas do projeto deve ficar:
     readme.md
 ```
 
-## Certifique-se que sua aplicação Laravel ficou em `./app` e que existe o seguinte caminho: `/app/public/index.php`
+# Certifique-se que sua aplicação Laravel ficou em `./app` e que existe o seguinte caminho: `/app/public/index.php`
+- Abra a pasta app no seu terminal e execute o comando: git clone https://github.com/viniciusrg/lojacorr.git .
 
-## Certifique-se que sua aplicação Laravel possuí um .env e que este .env está com a `APP_KEY=` definida com valor válido.
+# Certifique-se que sua aplicação Laravel possuí um .env e que este .env está com a `APP_KEY=` definida com valor válido.
+- Seu .env deverá ficar semelhante a esse:
+DB_CONNECTION=mysql
+DB_HOST=host.docker.internal
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=root_password
 
-## Contruir a imagem Docker, execute:
+# Contruir a imagem Docker, execute:
 
 ```sh
 docker compose build
 ```
 
-## Caso não queira utilizar o cache da imagem presente no seu ambiente Docker, então execute:
-
-```sh
-docker compose build --no-cache
-```
-
-## Para subir a aplicação, execute:
+# Para subir a aplicação, execute:
 
 ```sh
 docker compose up
@@ -70,26 +57,22 @@ docker compose up
 docker compose up -d
 ```
 
-## Para derrubar a aplicação, execute:
+# Para derrubar a aplicação, execute:
 
 ```sh
 docker compose down
 ```
 
-## Para entrar dentro do Container da Aplicação, execute:
+# Para entrar dentro do Container da Aplicação, execute:
 
 ```sh
 docker exec -it web bash
 ```
 
-# Solução de Problemas
+# Acesso o container da aplicação para executar os comando do Laravel
+- composer install
+- php artisan key:generate (Caso ainda não tenha uma key no seu arquivo .env)
+- php artisan migrate
 
-## Problema de permissão
-
-- Quando for criado novos arquivos, ou quando for a primeira inicialização do container com a aplicação, pode então haver um erro de permissão de acesso as pastas, neste caso, entre dentro do container da aplicação e execeute.
-
-```sh
-cd /var/www && \
-chown -R www-data:www-data * && \
-chmod -R o+w app
-```
+# Dentro do diretório ./app você irá encontrar um diretório Docs com o arquivo de importação do Insomnia para utilizar.
+- Para mais informações acesso o README da branch main.
